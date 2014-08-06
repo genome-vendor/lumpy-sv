@@ -1,0 +1,20 @@
+#!/usr/bin/make -f
+
+PRG=lumpy
+VER=0.2.6
+PKG=$(PRG)$(VER)
+DEB_DIR=debian/$(PKG)
+PKG_LIB_DIR=/usr/lib/$(PKG)
+BIN_WRAPPER=$(DEB_DIR)/usr/bin/$(PRG)$(VER)
+BIN_WRAPPER_TEXT=\
+'\#!/bin/sh\n'\
+'export PATH=$(PKG_LIB_DIR)/bin:$$PATH\n'\
+"exec $(PRG)" '"$$@"'
+
+%:
+	dh $@
+
+override_dh_auto_install:
+		mkdir -p $(DEB_DIR)/usr/bin;\
+		echo $(BIN_WRAPPER_TEXT) | sed 's/^ *//' > $(BIN_WRAPPER);\
+		chmod 755 $(BIN_WRAPPER)

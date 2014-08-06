@@ -1,0 +1,13 @@
+Source: lumpy0.2.6
+Section: science
+Priority: optional
+Build-Depends: build-essential, cmake, debhelper (>= 7), zlib1g-dev
+Maintainer: The Genome Institute <gmt@genome.wustl.edu>
+Uploaders: Miranda Fulton <mfulton@genome.wustl.edu>
+Homepage: https://github.com/arq5x/lumpy-sv
+
+Package: lumpy0.2.6
+Architecture: amd64
+Depends: zlib1g-dev
+Provides: lumpy 
+Description: Lumpy - structural variation detection framework
